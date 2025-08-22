@@ -23,51 +23,43 @@ public class Radio {
         currentFrequency = newCurrentFrequency;
     }
 
-    public void nextFrequency(int newNextFrequency) {
-        if (newNextFrequency < 0) {
-           currentFrequency = 0;
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < 0) {
+            return;
         }
-        if (newNextFrequency < 9 && newNextFrequency >= 0) {
-            currentFrequency = newNextFrequency + 1;
+        if (newCurrentVolume > 100) {
+            return;
         }
-        if (newNextFrequency >= 9) {
+        currentVolume = newCurrentVolume;
+    }
+
+    public void nextFrequency() {
+        if (currentFrequency < 9) {
+            currentFrequency = currentFrequency + 1;
+        }
+        if (currentFrequency == 9) {
             currentFrequency = 0;
         }
     }
 
-    public void prevFrequency(int newPrevFrequency) {
-        if (newPrevFrequency > 9) {
-            currentFrequency = 9;
+    public void prevFrequency() {
+        if (currentFrequency > 0) {
+            currentFrequency = currentFrequency - 1;
         }
-        if (newPrevFrequency >= 1 && newPrevFrequency <= 9) {
-            currentFrequency = newPrevFrequency - 1;
-        }
-        if (newPrevFrequency <= 0) {
+        if (currentFrequency == 0) {
             currentFrequency = 9;
         }
     }
 
-    public void increaseVolume(int newVolumeUp) {
-        if (newVolumeUp < 0) {
-            currentVolume = 0;
-        }
-        if (newVolumeUp < 100 && newVolumeUp > 0) {
-            currentVolume = newVolumeUp + 1;
-        }
-        if (newVolumeUp >= 100) {
-            currentVolume = 100;
+    public void increaseVolume() {
+        if (currentVolume < 100) {
+            currentVolume = currentVolume + 1;
         }
     }
 
-    public void degreaseVolume(int newVolumeDown) {
-        if (newVolumeDown > 100) {
-            currentVolume = 100;
-        }
-        if (newVolumeDown > 0 && newVolumeDown <= 100) {
-            currentVolume = newVolumeDown -1;
-        }
-        if (newVolumeDown <= 0) {
-            currentVolume = 0;
+    public void degreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume -1;
         }
     }
 }
