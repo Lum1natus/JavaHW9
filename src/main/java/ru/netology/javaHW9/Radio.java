@@ -36,8 +36,7 @@ public class Radio {
     public void nextFrequency() {
         if (currentFrequency < 9) {
             currentFrequency = currentFrequency + 1;
-        }
-        if (currentFrequency == 9) {
+        } else {
             currentFrequency = 0;
         }
     }
@@ -45,10 +44,11 @@ public class Radio {
     public void prevFrequency() {
         if (currentFrequency > 0) {
             currentFrequency = currentFrequency - 1;
-        }
-        if (currentFrequency == 0) {
+        } else {
             currentFrequency = 9;
         }
+
+
     }
 
     public void increaseVolume() {
